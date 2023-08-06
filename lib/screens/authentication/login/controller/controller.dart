@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 // BUG: Duplicate GlobalKey detected in widget tree.
 
 class LoginController extends GetxController {
-  final loginService = LoginService();
+  final loginService = LogInService();
 
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
@@ -16,9 +16,10 @@ class LoginController extends GetxController {
 
   Future<dynamic> loginUser() async {
     Map<String, dynamic> loginData = {
-      'phone_number': "0${phoneCtrlr.text}",
+      'phone_number': "+254${phoneCtrlr.text}",
       'password': passCtrlr.text,
     };
+    
     if (loginFormKey.currentState!.validate()) {
       loginFormKey.currentState?.save();
       return await loginService.loginUser(loginData);
